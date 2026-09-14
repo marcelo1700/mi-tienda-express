@@ -5,8 +5,7 @@ const productosBD = [
     { id: 103, nombre: "Reloj Inteligente", precio: 220.00, imagen: "https://picsum.photos/id/175/200/150" },
     { id: 104, nombre: "Mochila Urbana", precio: 90.00, imagen: "https://picsum.photos/id/1062/200/150" },
     // ➕ NUEVO PRODUCTO
-    { id: 105, nombre: "Audífonos Bluetooth", precio: 150.00, imagen: "https://picsum.photos/id/1/200/150" }
-];
+    ];
 
 // 2. ESTADO DE LA APLICACIÓN (El carrito guardado en la memoria RAM)
 let carrito = [];
