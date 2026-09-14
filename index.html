@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda - MVP</title>
+    <style>
+        /* Estilos CSS integrados para mantenerlo sencillo */
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background-color: #f8f9fa; }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+        .tarjeta { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .tarjeta img { width: 100%; height: 120px; object-fit: cover; border-radius: 4px; }
+        .btn-comprar { background-color: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 10px; }
+        .btn-comprar:hover { background-color: #0056b3; }
+        
+        /* Panel del Carrito */
+        .seccion-carrito { background: white; padding: 15px; border-radius: 8px; margin-top: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .item-carrito { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 8px 0; }
+        .total { font-weight: bold; font-size: 1.2rem; color: #28a745; text-align: right; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🛍️ Mi Tienda Express</h1>
+        <div>Carrito: <strong id="contador-carrito">0</strong> productos</div>
+    </header>
+
+    <main>
+        <h2>Catálogo de Productos</h2>
+        <!-- Aquí JavaScript inyectará los productos dinámicamente -->
+        <section id="catalogo" class="grid-productos"></section>
+
+        <!-- Sección del Carrito de Compras -->
+        <section class="seccion-carrito">
+            <h2>🛒 Tu Carrito</h2>
+            <div id="items-carrito">
+                <p>El carrito está vacío.</p>
+            </div>
+            <div class="total">Total: S/ <span id="precio-total">0.00</span></div>
+        </section>
+    </main>
+
+    <!-- Conectamos la lógica en JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
