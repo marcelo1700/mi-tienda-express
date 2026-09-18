@@ -1,69 +1,261 @@
-import Image from "next/image";
+const categories = [
+  {
+    name: "Electrónica",
+    description: "Tecnología y accesorios",
+    href: "/categorias/electronica",
+  },
+  {
+    name: "Hogar",
+    description: "Productos para tu hogar",
+    href: "/categorias/hogar",
+  },
+  {
+    name: "Moda",
+    description: "Ropa y accesorios",
+    href: "/categorias/moda",
+  },
+];
+
+const products = [
+  {
+    id: 1,
+    name: "Audífonos Bluetooth",
+    price: 89.9,
+    category: "Electrónica",
+  },
+  {
+    id: 2,
+    name: "Smart Watch",
+    price: 149.9,
+    category: "Electrónica",
+  },
+  {
+    id: 3,
+    name: "Mochila Urbana",
+    price: 79.9,
+    category: "Moda",
+  },
+  {
+    id: 4,
+    name: "Lámpara LED",
+    price: 49.9,
+    category: "Hogar",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <main className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="border-b bg-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <a href="/" className="text-2xl font-bold text-gray-900">
+            Mi Tienda Express
+          </a>
+
+          <nav className="hidden gap-6 md:flex">
+            <a href="/" className="text-gray-700 hover:text-black">
+              Inicio
+            </a>
+            <a href="/productos" className="text-gray-700 hover:text-black">
+              Productos
+            </a>
+            <a href="/categorias" className="text-gray-700 hover:text-black">
+              Categorías
+            </a>
+            <a href="/carrito" className="text-gray-700 hover:text-black">
+              Carrito
+            </a>
+          </nav>
+
+          <div className="flex gap-3">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="/login"
+              className="rounded-lg border px-4 py-2 text-sm font-medium hover:bg-gray-100"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Iniciar sesión
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="bg-gray-900 text-white">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <div className="max-w-2xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-300">
+              Mi Tienda Express
+            </p>
+
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+              Todo lo que necesitas, en un solo lugar.
+            </h1>
+
+            <p className="mt-6 text-lg text-gray-300">
+              Descubre nuestros productos, encuentra lo que buscas y realiza
+              tu compra de manera rápida y sencilla.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="/productos"
+                className="rounded-lg bg-white px-6 py-3 font-semibold text-gray-900 hover:bg-gray-200"
+              >
+                Ver productos
+              </a>
+
+              <a
+                href="/categorias"
+                className="rounded-lg border border-gray-600 px-6 py-3 font-semibold hover:bg-gray-800"
+              >
+                Ver categorías
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categorías */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-gray-900">
+            Explora nuestras categorías
+          </h2>
+
+          <p className="mt-2 text-gray-600">
+            Encuentra rápidamente lo que necesitas.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {categories.map((category) => (
+            <a
+              key={category.name}
+              href={category.href}
+              className="rounded-xl border bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+            >
+              <h3 className="text-xl font-bold text-gray-900">
+                {category.name}
+              </h3>
+
+              <p className="mt-2 text-gray-600">{category.description}</p>
+
+              <span className="mt-6 inline-block font-medium text-gray-900">
+                Ver categoría →
+              </span>
+            </a>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Productos destacados */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="mb-8 flex items-end justify-between">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900">
+                Productos destacados
+              </h2>
+
+              <p className="mt-2 text-gray-600">
+                Algunos de nuestros productos.
+              </p>
+            </div>
+
+            <a
+              href="/productos"
+              className="hidden font-medium text-gray-900 sm:block"
+            >
+              Ver todos →
+            </a>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {products.map((product) => (
+              <article
+                key={product.id}
+                className="overflow-hidden rounded-xl border bg-white shadow-sm"
+              >
+                <div className="flex h-56 items-center justify-center bg-gray-100">
+                  <span className="text-gray-400">Imagen del producto</span>
+                </div>
+
+                <div className="p-5">
+                  <p className="text-sm text-gray-500">{product.category}</p>
+
+                  <h3 className="mt-1 text-lg font-semibold text-gray-900">
+                    {product.name}
+                  </h3>
+
+                  <p className="mt-3 text-xl font-bold text-gray-900">
+                    S/ {product.price.toFixed(2)}
+                  </p>
+
+                  <a
+                    href={`/productos/${product.id}`}
+                    className="mt-4 block rounded-lg bg-gray-900 px-4 py-2 text-center font-medium text-white hover:bg-gray-700"
+                  >
+                    Ver producto
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300">
+        <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="grid gap-8 md:grid-cols-3">
+            <div>
+              <h3 className="text-lg font-bold text-white">
+                Mi Tienda Express
+              </h3>
+
+              <p className="mt-3 text-sm">
+                Tu tienda online para comprar de forma rápida y sencilla.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white">Tienda</h3>
+
+              <div className="mt-3 flex flex-col gap-2 text-sm">
+                <a href="/productos" className="hover:text-white">
+                  Productos
+                </a>
+
+                <a href="/categorias" className="hover:text-white">
+                  Categorías
+                </a>
+
+                <a href="/carrito" className="hover:text-white">
+                  Carrito
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white">Cuenta</h3>
+
+              <div className="mt-3 flex flex-col gap-2 text-sm">
+                <a href="/login" className="hover:text-white">
+                  Iniciar sesión
+                </a>
+
+                <a href="/registro" className="hover:text-white">
+                  Crear cuenta
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 border-t border-gray-700 pt-6 text-sm">
+            © 2026 Mi Tienda Express. Todos los derechos reservados.
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }
